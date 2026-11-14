@@ -20,7 +20,7 @@ Address, mobile +92 334 9066826, landline +92 91 7089820, and email: https://yus
 
 Dr. Yusaf Imran and broad treatment categories: https://www.marham.pk/doctors/peshawar/dentist/dr-yusaf-imran and https://oladoc.com/pakistan/peshawar/dr/orthodontist/yousaf-imran/965715 . Qualifications, experience counts, prices and ratings omitted because listing details vary.
 
-Google Maps place ID `ChIJCTQl-RgX2TgR0OQ1Euwh5Oc` is decoded from the exact feature ID supplied in the original Maps URL. Directions and embedded map target that place rather than a generic area.
+Google Maps place ID `ChIJCTQl-RgX2TgR0OQ1Euwh5Oc` is decoded from the exact feature ID supplied in the original Maps URL. Directions target that exact place. The embedded map searches the clinic name and University Road address; the place-ID query is not supported by this keyless embed format.
 
 Hours vary across third-party directories, so visitors are asked to call for availability. Have the clinic confirm services, current contacts, WhatsApp availability and hours before using this as its official site. Replace the monogram with a clinic-approved doctor photo if provided.
 
