@@ -1,0 +1,6 @@
+.vercel/
+.openai/
+.DS_Store
+node_modules/
+*.tgz
+*.tar.gz

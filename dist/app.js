@@ -1,0 +1,34 @@
+const toggle = document.querySelector('.menu-toggle');
+const navigation = document.querySelector('#navigation');
+function closeMenu(){toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open menu');navigation.classList.remove('open');}
+toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close menu':'Open menu');navigation.classList.toggle('open',open);});
+navigation.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
+document.addEventListener('click',e=>{if(!e.target.closest('header'))closeMenu();});
+window.matchMedia('(min-width:761px)').addEventListener('change',closeMenu);
+document.querySelectorAll('[data-treatment]').forEach(link=>link.addEventListener('click',()=>{document.querySelector('#treatment').value=link.dataset.treatment;}));
+const dateInput=document.querySelector('#preferred-date');
+const now=new Date();
+const today=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+dateInput.min=today;
+document.querySelector('#year').textContent=now.getFullYear();
+const form=document.querySelector('#booking-form');
+form.addEventListener('submit',event=>{
+ event.preventDefault();
+ const name=document.querySelector('#name');
+ name.setCustomValidity(name.value.trim()?'':'Please enter your name.');
+ if(!form.reportValidity())return;
+ const rawDate=dateInput.value;
+ const preferred=rawDate?new Date(`${rawDate}T12:00:00`).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'Please let me know your availability';
+ const message=`Hello Yusaf Dental Practice! I’d like to request an appointment.\n\nName: ${name.value.trim()}\nReason for visit: ${document.querySelector('#treatment').value}\nPreferred date: ${preferred}\n\nPlease confirm availability and the consultation fee. Thank you.`;
+ const url=`https://wa.me/923349066826?text=${encodeURIComponent(message)}`;
+ const status=document.querySelector('#form-status');
+ status.replaceChildren(document.createTextNode('Your enquiry is ready. '));
+ const retry=document.createElement('a');retry.href=url;retry.target='_blank';retry.rel='noopener noreferrer';retry.textContent='Open WhatsApp';status.append(retry);status.hidden=false;
+ window.open(url,'_blank','noopener,noreferrer');
+});
+document.querySelector('#name').addEventListener('input',e=>e.target.setCustomValidity(''));
+const privacy=document.querySelector('#privacy-dialog');
+document.querySelector('#privacy-open').addEventListener('click',()=>privacy.showModal());
+document.querySelector('#privacy-close').addEventListener('click',()=>privacy.close());
+privacy.addEventListener('click',e=>{if(e.target===privacy){const r=privacy.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)privacy.close();}});

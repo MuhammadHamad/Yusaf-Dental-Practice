@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yusaf-dental-practice.vercel.app/sitemap.xml
